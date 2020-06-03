@@ -23,10 +23,13 @@ namespace Bank
                 switch (choice)
                 {
                     case 1:
+                        Console.WriteLine("Enter Account Number : ");
+                        userInput = Console.ReadLine();
+                        accountNumber = Convert.ToInt32(userInput);
                         Console.WriteLine("Enter Amount To Be Withdrow : ");
                         userInput = Console.ReadLine();
                         amount = Convert.ToInt32(userInput);
-                        withdrow(accountNumber, amount);
+                        Withdraw(accountNumber, amount);
                         break;
 
                     case 2:
@@ -71,8 +74,6 @@ namespace Bank
                     break;
                 }
             }
-
-
         }
 
         private static void AddUser(int accountNumber)
@@ -102,9 +103,9 @@ namespace Bank
             list.Deposit(accountNumber, amount);
         }
 
-        private static void withdrow(int accountNumber, int amount)
+        private static void Withdraw(int accountNumber, int amount)
         {
-            throw new NotImplementedException();
+            list.Withdraw(accountNumber, amount);
         }
     }
 }

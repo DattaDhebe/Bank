@@ -50,6 +50,11 @@ namespace Bank
                 firstNode = firstNode.next;
             }
         }
+
+        /// <summary>
+        /// To Search User Details to Check for Balance.
+        /// </summary>
+        /// <param name="accountNumber"></param>
         public void Search(int accountNumber)
         {
             Node firstNode = head;
@@ -65,19 +70,64 @@ namespace Bank
             }
         }
 
+        /// <summary>
+        /// To Deposit Amount to Users Account
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <param name="amount"></param>
         public void Deposit(int accountNumber, int amount)
         {
             Node firstNode = head;
             while (firstNode != null)
             {
+                //search till account number matches
                 if (firstNode.accountNumber == accountNumber)
                 {
+                    //add new amount to previous balance
                     firstNode.balance = firstNode.balance + amount;
                     Console.Write("Account Number : " + firstNode.accountNumber + "\n" +
                                   "User Name      : " + firstNode.userName + "\n" +
                                   "Account Balance: " + firstNode.balance + "\n\n");
                 }
                 firstNode = firstNode.next;
+                if (firstNode == null)
+                {
+                    Console.WriteLine("Wrong Account Number..Enter Right Account Number..!!");
+                }
+            }   
+        }
+        
+        /// <summary>
+        /// To Withdrow Balance from Users Account
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <param name="amount"></param>
+        public void Withdraw(int accountNumber, int amount)
+        {
+            Node firstNode = head;
+            while (firstNode != null)
+            {
+                //Search till Account number matches
+                if (firstNode.accountNumber == accountNumber)
+                {
+                    //check if Balance Sufficient
+                    if (firstNode.balance > amount)
+                    {
+                        //subtract Amount from previous Balance
+                        firstNode.balance = firstNode.balance - amount;
+                        Console.Write("Account Number : " + firstNode.accountNumber + "\n" +
+                                  "User Name      : " + firstNode.userName + "\n" +
+                                  "Account Balance: " + firstNode.balance + "\n\n");
+                    }
+                    //check if Balance Insufficient
+                    if (firstNode.balance < amount )
+                        Console.WriteLine("Sorry..Balance is Insufficient.");
+                }
+                firstNode = firstNode.next;
+                if (firstNode == null)
+                {
+                    Console.WriteLine("Wrong Account Number..Enter Right Account Number..!!");
+                }
             }
         }
 
