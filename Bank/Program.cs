@@ -11,7 +11,7 @@ namespace Bank
             string userInput;
             int choice = 0, amount, accountNumber;
             Console.WriteLine("Welcome TO State Bank..!!");
-            Console.Write("1. Withdrow\n2. Deposit\n3. Check Balance\n4.Add User\n");
+            Console.Write("1. Withdrow\n2. Deposit\n3. Check Balance\n4. Add User\n");
             Console.WriteLine("\nSelect Your Choice : ");
             userInput = Console.ReadLine();
             choice = Convert.ToInt32(userInput);
@@ -55,9 +55,9 @@ namespace Bank
             userInput = Console.ReadLine();
             amount = Convert.ToInt32(userInput);
 
-            BankingOperation list = new BankingOperation();
-            list.add();
-
+            LinkList<UserRegistration> list = new LinkList<UserRegistration>();
+            list.Add(new UserRegistration(userName, amount));
+            list.PrintList();
         }
 
         private static void CheckBalance(int accountNumber)

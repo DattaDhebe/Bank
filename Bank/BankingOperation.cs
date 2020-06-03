@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Bank
 {
-    class BankingOperation
+    public class BankingOperation
     {
+        
+   
     }
+
 }
