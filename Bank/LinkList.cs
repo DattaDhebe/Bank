@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Drawing;
 
 namespace Bank
 {
     public class LinkList<T>
     {
-        int count = 0;
         public Node head; // head of list 
 
         /* Linked list Node*/
@@ -13,37 +11,59 @@ namespace Bank
         {
             
             public Node next;
-            public object userDetails;
+            public int accountNumber;
+            public string userName;
+            public int balance;
             
-            public Node(object userDetails)
+            public Node(int accountNumber, string userName, int balance)
             {
-                this.userDetails = userDetails;
+                this.accountNumber = accountNumber;
+                this.userName = userName;
+                this.balance = balance;
                 next = null;
             }
         }
-
-        public void Add(object userDetails)
+        
+        public void Add(int accountNumber, string userName, int balance)
         {
-            /* 1 & 2: Allocate the Node & 
-                    Put in the data*/
-            Node new_node = new Node(userDetails);
+            //Allocate the Node & Put in the data
+            Node new_node = new Node(accountNumber, userName, balance);
 
-            /* 3. Make next of new Node as head */
+            //Make next of new Node as head 
             new_node.next = head;
 
-            /* 4. Move the head to point to new Node */
+            //Move the head to point to new Node 
             head = new_node;
-            count++;
         }
 
+        /// <summary>
+        /// Display Data of User
+        /// </summary>
         public void PrintList()
         {
             Node firstNode = head;
             while (firstNode != null)
             {
-                Console.Write(firstNode.userDetails + " ");
+                Console.Write("Account Number : " + firstNode.accountNumber + "\n" +
+                              "User Name      : " + firstNode.userName + "\n" +
+                              "Account Balance: " + firstNode.balance + "\n\n");
                 firstNode = firstNode.next;
             }
         }
+        public void Search(int accountNumber)
+        {
+            Node firstNode = head;
+            while (firstNode != null)
+            {
+                if (firstNode.accountNumber == accountNumber)
+                {
+                    Console.Write("Account Number : " + firstNode.accountNumber + "\n" +
+                                  "User Name      : " + firstNode.userName + "\n" +
+                                  "Account Balance: " + firstNode.balance + "\n\n");    
+                }
+                firstNode = firstNode.next;
+            }
+        }
+
     }
 }

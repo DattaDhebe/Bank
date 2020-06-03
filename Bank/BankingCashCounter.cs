@@ -1,19 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+
 
 namespace Bank
 {
     class BankingCashCounter
     {
+        public static LinkList<UserData> list = new LinkList<UserData>();
+        public static int accountNumber = 1;
         static void Main(string[] args)
         {
             string userInput;
-            int choice = 0, amount, accountNumber;
+            int choice = 0, amount;
             while (true)
             {
-                Console.WriteLine("Welcome TO State Bank..!!");
-                Console.Write("\n\n1. Withdrow\n2. Deposit\n3. Check Balance\n4. Add User\n5. Exit\n");
+                Console.WriteLine("\nWelcome To State Bank..!!");
+                Console.Write("\n1. Withdrow\n2. Deposit\n3. Check Balance\n4. Add User\n5. Display All User Deatails\n6. Exit\n");
                 Console.WriteLine("\nSelect Your Choice : ");
                 userInput = Console.ReadLine();
                 choice = Convert.ToInt32(userInput);
@@ -43,10 +44,17 @@ namespace Bank
                         break;
 
                     case 4:
-                        AddUser();
+                        AddUser(accountNumber);
+                        accountNumber = accountNumber + 1;
+                        Console.WriteLine("Data Are Successfully Added.");
                         break;
 
                     case 5:
+                        Console.WriteLine("\n~ User Details ~ ");
+                        list.PrintList();
+                        break;
+
+                    case 6:
                         break;
 
                     default:
@@ -54,7 +62,7 @@ namespace Bank
                         break;
                         
                 }
-                if (choice == 5)
+                if (choice == 6)
                 {
                     Console.WriteLine("Thank You For Banking With Us..!!");
                     break;
@@ -64,26 +72,26 @@ namespace Bank
 
         }
 
-        private static void AddUser()
+        private static void AddUser(int accountNumber)
         {
             string userName, userInput;
             int amount;
+
+            Console.WriteLine("~ New User Registration ~ ");
+
             Console.WriteLine("Enter User Name : ");
             userName = Console.ReadLine();
-            Console.WriteLine("Enter Opening Amount : ");
+            Console.WriteLine("Enter Amount : ");
             userInput = Console.ReadLine();
             amount = Convert.ToInt32(userInput);
-
-            LinkList<UserRegistration> list = new LinkList<UserRegistration>();
-            object userDetails = userName + "\n" + amount;
-            list.Add(userDetails);
-            list.PrintList();
             
+            // Add new User Details to Node
+            list.Add(accountNumber, userName, amount);
         }
 
         private static void CheckBalance(int accountNumber)
         {
-            throw new NotImplementedException();
+            list.Search(accountNumber);
         }
 
         private static void Deposit(int amount)
