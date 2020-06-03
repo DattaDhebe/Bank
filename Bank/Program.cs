@@ -38,16 +38,16 @@ namespace Bank
                     CheckBalance(accountNumber);
                     break;
                 case 4: 
-                    AddUser(userInput);
+                    AddUser();
                     break;
             }
 
 
         }
 
-        private static void AddUser(string userInput)
+        private static void AddUser()
         {
-            string userName;
+            string userName, userInput;
             int amount;
             Console.WriteLine("Enter User Name : ");
             userName = Console.ReadLine();
@@ -58,6 +58,7 @@ namespace Bank
             LinkList<UserRegistration> list = new LinkList<UserRegistration>();
             list.Add(new UserRegistration(userName, amount));
             list.PrintList();
+            
         }
 
         private static void CheckBalance(int accountNumber)

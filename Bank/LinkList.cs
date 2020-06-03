@@ -9,19 +9,21 @@ namespace Bank
         /* Linked list Node*/
         public class Node
         {
-            public string userName;
-            public int balance;
             
             public Node next;
-            internal string data;
-            private UserRegistration userRegistration;
+            public string data;
+            public UserRegistration userRegistration;
 
             public Node(UserRegistration userRegistration)
             {
                 this.userRegistration = userRegistration;
             }
 
-            //public Node(string d) { data = d; next = null; }
+            public Node(string userRegistration) 
+            { 
+                data = userRegistration; 
+                next = null; 
+            }
 
         }
 
@@ -38,13 +40,13 @@ namespace Bank
             head = new_node;
         }
 
-        internal void PrintList()
+        public void PrintList()
         {
-            Node tnode = head;
-            while (tnode != null)
+            Node firstNode = head;
+            while (firstNode != null)
             {
-                Console.Write(tnode.data + " ");
-                tnode = tnode.next;
+                Console.Write(firstNode.data + " ");
+                firstNode = firstNode.next;
             }
         }
     }
