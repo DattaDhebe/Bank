@@ -27,17 +27,17 @@ namespace Bank
         public void Add(int accountNumber, string userName, int balance)
         {
             //Allocate the Node & Put in the data
-            Node new_node = new Node(accountNumber, userName, balance);
+            Node newNode = new Node(accountNumber, userName, balance);
 
             //Make next of new Node as head 
-            new_node.next = head;
+            newNode.next = head;
 
             //Move the head to point to new Node 
-            head = new_node;
+            head = newNode;
         }
 
         /// <summary>
-        /// Display Data of User
+        /// Display Data of All Users
         /// </summary>
         public void PrintList()
         {
@@ -60,6 +60,22 @@ namespace Bank
                     Console.Write("Account Number : " + firstNode.accountNumber + "\n" +
                                   "User Name      : " + firstNode.userName + "\n" +
                                   "Account Balance: " + firstNode.balance + "\n\n");    
+                }
+                firstNode = firstNode.next;
+            }
+        }
+
+        public void Deposit(int accountNumber, int amount)
+        {
+            Node firstNode = head;
+            while (firstNode != null)
+            {
+                if (firstNode.accountNumber == accountNumber)
+                {
+                    firstNode.balance = firstNode.balance + amount;
+                    Console.Write("Account Number : " + firstNode.accountNumber + "\n" +
+                                  "User Name      : " + firstNode.userName + "\n" +
+                                  "Account Balance: " + firstNode.balance + "\n\n");
                 }
                 firstNode = firstNode.next;
             }

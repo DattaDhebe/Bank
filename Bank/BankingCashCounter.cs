@@ -26,14 +26,17 @@ namespace Bank
                         Console.WriteLine("Enter Amount To Be Withdrow : ");
                         userInput = Console.ReadLine();
                         amount = Convert.ToInt32(userInput);
-                        withdrow(amount);
+                        withdrow(accountNumber, amount);
                         break;
 
                     case 2:
+                        Console.WriteLine("Enter Account Number : ");
+                        userInput = Console.ReadLine();
+                        accountNumber = Convert.ToInt32(userInput);
                         Console.WriteLine("Enter Amount To Be Deposit : ");
                         userInput = Console.ReadLine();
                         amount = Convert.ToInt32(userInput);
-                        Deposit(amount);
+                        Deposit(accountNumber, amount);
                         break;
 
                     case 3:
@@ -94,12 +97,12 @@ namespace Bank
             list.Search(accountNumber);
         }
 
-        private static void Deposit(int amount)
+        private static void Deposit(int accountNumber, int amount)
         {
-            throw new NotImplementedException();
+            list.Deposit(accountNumber, amount);
         }
 
-        private static void withdrow(int amount)
+        private static void withdrow(int accountNumber, int amount)
         {
             throw new NotImplementedException();
         }
