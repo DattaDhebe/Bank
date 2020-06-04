@@ -157,5 +157,22 @@ namespace Bank
             firstNode = null;   
         }
 
+        public void DeleteFirst()
+        {
+            Node firstNode = head;
+            head = head.next;       
+        }
+
+        public void DeleteLast()
+        {
+            // Find the second last node 
+            Node second_last = head;
+            while (second_last.next.next != null)
+                second_last = second_last.next;
+
+            // Change next of second last 
+            second_last.next = null;
+        }
+
     }
 }

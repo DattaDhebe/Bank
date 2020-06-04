@@ -13,7 +13,6 @@ namespace Bank
             this.userName = userName;
             this.balance = balance;
         }
-
     }
 }
 
