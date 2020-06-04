@@ -116,8 +116,8 @@ namespace Bank
                         //subtract Amount from previous Balance
                         firstNode.balance = firstNode.balance - amount;
                         Console.Write("Account Number : " + firstNode.accountNumber + "\n" +
-                                  "User Name      : " + firstNode.userName + "\n" +
-                                  "Account Balance: " + firstNode.balance + "\n\n");
+                                      "User Name      : " + firstNode.userName + "\n" +
+                                      "Account Balance: " + firstNode.balance + "\n\n");
                     }
                     //check if Balance Insufficient
                     if (firstNode.balance < amount )
@@ -129,6 +129,32 @@ namespace Bank
                     Console.WriteLine("Wrong Account Number..Enter Right Account Number..!!");
                 }
             }
+        }
+
+        public void Delete(int accountNumber)
+        {
+            Node firstNode = head;
+            Node previous = null;
+
+            while (firstNode.next != null)
+            {
+                //search till account number matches
+                if (firstNode.accountNumber.Equals(accountNumber))
+                    break;
+                else
+                {
+                    previous = firstNode;
+                    firstNode = firstNode.next;
+                }
+
+                if (firstNode == null)
+                {
+                    Console.WriteLine("Wrong Account Number..Enter Right Account Number..!!");
+                }
+            }
+            firstNode = firstNode.next;
+            previous.next = firstNode;
+            firstNode = null;   
         }
 
     }

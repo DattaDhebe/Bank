@@ -14,7 +14,7 @@ namespace Bank
             while (true)
             {
                 Console.WriteLine("\nWelcome To State Bank..!!");
-                Console.Write("\n1. Withdrow\n2. Deposit\n3. Check Balance\n4. Add User\n5. Display All User Deatails\n6. Exit\n");
+                Console.Write("\n1. Withdraw\n2. Deposit\n3. Check Balance\n4. Add User\n5. Delete User\n6. Display All User Deatails\n7. Exit\n");
                 Console.WriteLine("\nSelect Your Choice : ");
                 userInput = Console.ReadLine();
                 choice = Convert.ToInt32(userInput);
@@ -56,11 +56,19 @@ namespace Bank
                         break;
 
                     case 5:
+                        Console.WriteLine("Enter Account Number To be Deleted :");
+                        userInput = Console.ReadLine();
+                        accountNumber = Convert.ToInt32(userInput);
+                        Delete(accountNumber);
+                        Console.WriteLine("Data Are Successfully Added.");
+                        break;
+
+                    case 6:
                         Console.WriteLine("\n~ User Details ~ ");
                         list.PrintList();
                         break;
 
-                    case 6:
+                    case 7:
                         break;
 
                     default:
@@ -68,12 +76,26 @@ namespace Bank
                         break;
                         
                 }
-                if (choice == 6)
+                if (choice == 7)
                 {
                     Console.WriteLine("Thank You For Banking With Us..!!");
                     break;
                 }
             }
+        }
+
+        private static void Withdraw(int accountNumber, int amount)
+        {
+            list.Withdraw(accountNumber, amount);
+        }
+        private static void Deposit(int accountNumber, int amount)
+        {
+            list.Deposit(accountNumber, amount);
+        }
+
+        private static void CheckBalance(int accountNumber)
+        {
+            list.Search(accountNumber);
         }
 
         private static void AddUser(int accountNumber)
@@ -93,19 +115,9 @@ namespace Bank
             list.Add(accountNumber, userName, amount);
         }
 
-        private static void CheckBalance(int accountNumber)
+        private static void Delete(int accountNumber)
         {
-            list.Search(accountNumber);
-        }
-
-        private static void Deposit(int accountNumber, int amount)
-        {
-            list.Deposit(accountNumber, amount);
-        }
-
-        private static void Withdraw(int accountNumber, int amount)
-        {
-            list.Withdraw(accountNumber, amount);
+            list.Delete(accountNumber);
         }
     }
 }
